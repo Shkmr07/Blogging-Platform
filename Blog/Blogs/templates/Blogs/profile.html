@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Detail</title>
+</head>
+<body>
+    <h1>Profile Details of {{detail.first_name}} </h1>
+    <div>
+        <p><b>Name :-</b>{{detail.first_name}} {{detail.last_name}}</p>
+        <p><b>Username :-</b>{{detail.username}}</p>
+        <p><b>Email :-</b>{{detail.email}}</p>
+    </div>
+    <a href="{% url 'post_list' %}">Back to Post Page</a>   
+
+</body>
+</html>

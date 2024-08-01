@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+</head>
+<style>
+    div{
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        padding: 10px;
+        
+    }
+</style>
+<body>
+    
+    <h1>PostList</h1>
+    <a href="{% url 'logout' %}">Logout</a>
+    <a href="{% url 'create_post' %}">Create Post</a>
+    <a href="{% url 'user_profile' %}">Profile Detail</a>
+    {% if not posts %}
+        <h1>No post available</h1>
+    {%else%}
+        {%for post in posts %}
+        <div>
+            <p><b>Title :-</b>{{post.title}}</p>
+            <p><b>Description :-</b>{{post.description}}</p>
+            <p><b>Post By :-</b>{{post.author}}</p>
+            {%if post.comment.all%}
+                <p><b>Comments :-</b></p>
+                <ol>
+                    {%for com in post.comment.all %}
+                    <li>{{com.description}}</li>
+                    {%endfor%}
+                </ol>
+            {%endif%}
+            <a href="{% url 'update_post' post.pk %}">Edit</a>
+            <a href="{% url 'delete_post' post.pk %}">Delete</a>
+            <a href="{% url 'comment_post' post.pk %}">Comments</a>
+        </div>
+        {%endfor%}
+    {% endif %}
+</body>
+</html>
